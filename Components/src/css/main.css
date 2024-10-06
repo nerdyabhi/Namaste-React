@@ -1,0 +1,7 @@
+.card-container{
+    margin: auto;
+    width: 100vw;
+    display: flex;
+    flex-wrap: wrap;
+    gap:10px;
+}
