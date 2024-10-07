@@ -1,19 +1,25 @@
-// import React from "react";
-import '../css/card.css';
 const  Card = (props)=>{
     
     return (
         <>
-            <div className="container">
-                <h1>Hello</h1>
-                <h1>{props.num}</h1>
-                <h2 className="cart-name">{props.name}</h2>
-                <img className="cart-img" src={props.data.avatar} />
-                <p className="cart-cuisine">{props.data.city}</p>
-                <p className="cart-cuisine">{props.data.country}</p>
-            </div>
-           
-            
+            <div className="card max-w-[18%] bg-base-100 w-96 shadow-xl hover:scale-105 hover:shadow-2xl transition-all duration-200">
+                <figure>
+                    <img
+                    src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                    alt="Shoes" />
+                </figure>
+                <div className="card-body">
+                    <h2 className="card-title">
+                    Shoes!
+                    <div className="badge badge-secondary">NEW</div>
+                    </h2>
+                    <p>If a dog chews shoes whose shoes does he choose?</p>
+                    <div className="card-actions justify-end">
+                    <div className="badge badge-outline">Fashion</div>
+                    <div className="badge badge-outline">Products</div>
+                    </div>
+                </div>
+                </div>
         </>
     )
 }
