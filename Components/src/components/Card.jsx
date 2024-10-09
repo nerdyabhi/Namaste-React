@@ -1,10 +1,14 @@
+import { Link } from "react-router-dom";
 const Card = (props) => {
     // console.log(props.data.info);
     const info = props?.data?.info;
+  console.log(info);
   
     return (
       <>
+     
         <div className="card md:max-w-[30%] lg:max-w-[20%] md:max-h-[500px] bg-base-100 w-full shadow-xl hover:scale-105 hover:shadow-2xl transition-all duration-200 overflow-hidden">
+        <Link to={"/restaurant/" + info.id}>
           <figure className="relative">
             <img
               src={"https://media-assets.swiggy.com/swiggy/image/upload/" + info.cloudinaryImageId}
@@ -37,6 +41,7 @@ const Card = (props) => {
               </div>
             </div>
           </div>
+        </Link>
         </div>
       </>
     );
