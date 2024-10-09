@@ -1,28 +1,39 @@
 import Header from './components/Header';
 import Body from './components/Body';
-import {createBrowserRouter} from 'react-router-dom';
+import {createBrowserRouter, Outlet} from 'react-router-dom';
 import About from './components/About';
+import Contact from './components/contact';
 import Error from './components/Error';
 const AppLayout = ()=> {
     return (
         <>
           <Header/>
-          <Body/>
+          <Outlet/>
         </>
     );
 }
 
 const appRouter = createBrowserRouter([
-    {
-        path:"/",
-        element:<AppLayout/>,
-        errorElement:<Error/>
-    },
+  {
+    path:"/",
+    element:<AppLayout/>,
+    children:[
+        {
+            path:"/about",
+            element:<About/>,
+        },
+        {
+            path:"/",
+            element:<Body/>
+        },
+        {
+            path:"/contact",
+            element:<Contact/>
+        }
+   ],
+   errorElement:<Error/>
 
-    {
-        path:"/about",
-        element:<About/>,
-    }
+  }
 ])
 
 export default appRouter;

@@ -8,20 +8,21 @@ function Body() {
     const [data , setData] = useState([]);
     const [resList, setResList] = useState([]);
 
-    const fetchData = async () => {
-        const API_URL = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.4757928&lng=88.415546&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
-        const res = await fetch('https://cors-anywhere.herokuapp.com/' + API_URL);
-        let res_data = await res.json();
-        setData(res_data);
-        setResList(res_data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants || []);
-    };
+    // const fetchData = async () => {
+    //     const API_URL = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.4757928&lng=88.415546&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
+    //     const res = await fetch('https://cors-anywhere.herokuapp.com/' + API_URL);
+    //     let res_data = await res.json();
+    //     setData(res_data);
+    //     setResList(res_data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants || []);
+    // };
 
     useEffect(() => {
         console.log("UseEffect called...");
         setData(mockData);
-        setResList(data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants || []);
+        setResList(mockData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants || []);
         // fetchData();
     }, []);
+    
 
     // Show loading message if data is not yet fetched
     if (resList.length === 0) {

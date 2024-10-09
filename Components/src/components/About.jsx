@@ -1,10 +1,9 @@
 import Header from "./Header";
 const About = ()=>{
     return (
-        <>
-            <Header/>
+        <div className="flex items-center justify-center h-full">
             <h1>Hey I am About page</h1>
-        </>
+        </div>
     )
 }
 
