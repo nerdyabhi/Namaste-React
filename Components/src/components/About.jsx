@@ -1,8 +1,9 @@
 import Header from "./Header";
+import UserClass from "./UserClass.jsx"
 const About = ()=>{
     return (
         <div className="flex items-center justify-center h-full">
-            <h1>Hey I am About page</h1>
+          <UserClass/>
         </div>
     )
 }
