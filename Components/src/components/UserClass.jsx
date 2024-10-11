@@ -4,23 +4,41 @@ class UserClass extends React.Component  {
         super(props);
 
         this.state = {
-            count:0,
+            userInfo:{
+                name:"John Doe",
+                avatar:"https://loremflickr.com/640/480",
+                city:"Kingsont",
+                country:"Unknown",
+            }
         }
     }
 
+    async componentDidMount(){
+        console.log("Component Mounted");
+        const res = await fetch("https://67011558b52042b542d6b88f.mockapi.io/MockData");
+        const data = await res.json();
+        
+        this.setState({
+            userInfo:data[0]
+        })
+      
+    }
+
+    componentDidUpdate(){
+        console.log("Component updated sir..");
+        
+    }
+
     render(){
-        const {name} = this.props;
-        let {count} = this.state;
+ 
+        let { name , avatar , city , country} = this.state.userInfo; 
 
         return(
             <>
                 <h1>{name}</h1>
-                <button className="btn px-10 border-white" onClick={()=>
-                {
-                    this.setState({
-                        count:count+1,
-                    })    
-                }}>{count}</button>
+                <img src={avatar} alt="Image will render shortly.." />
+                <h1 className="btn btn-warning">{city}</h1>
+                <h1 className="btn btn-warning">{country}</h1>
             </>
         )
     }
