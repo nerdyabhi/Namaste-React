@@ -1,16 +1,31 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import useIsOnline from "../utils/useIsOnline";
+
 function Header() {
-    return (
+  const isOnline = useIsOnline();
+  console.log("Value of isOnline " , isOnline);
+  
+  return (
+
+
     <div className="navbar bg-base-100">
   <div className="flex-1">
     <Link to="/" className="btn btn-ghost text-xl">Abhi Sharma</Link>
   </div>
 
+
+    
+    <div className="mr-3">
+      <p>{isOnline ? '🟢' : '🔴'}</p>
+      </div>
+
+
       <div className="flex gap-5 mr-8 md:mr-10 ">
         <Link to="/about">About</Link>
         <Link to="/contact">Contact</Link>
       </div>
+
 
   <div className="flex-none gap-2">
     <div className="form-control">

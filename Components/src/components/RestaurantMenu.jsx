@@ -1,11 +1,9 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from '../utils/useRestaurantMenu'
 
 const RestaurantMenu = () => {
-    const restId = useParams().restId;
-    
-   const resInfo = useRestaurantMenu(restId);
+  const restId = useParams().restId;
+  const resInfo = useRestaurantMenu(restId);
     
    console.log(resInfo);
    
