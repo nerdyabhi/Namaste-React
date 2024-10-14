@@ -24,6 +24,7 @@ function Header() {
       <div className="flex gap-5 mr-8 md:mr-10 ">
         <Link to="/about">About</Link>
         <Link to="/contact">Contact</Link>
+        <Link to="/Grocery">Grocery</Link>
       </div>
 
 

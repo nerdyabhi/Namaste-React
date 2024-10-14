@@ -5,6 +5,11 @@ import About from './components/About';
 import Contact from './components/Contact';
 import Error from './components/Error';
 import RestaurantMenu from './components/RestaurantMenu';
+import { lazy, Suspense } from 'react';
+
+
+/* Lazy loading Grocery Component */
+const Grocery = lazy(()=>import('./components/Grocery'));
 const AppLayout = ()=> {
     return (
         <>
@@ -35,6 +40,10 @@ const appRouter = createBrowserRouter([
         {
             path:"/restaurant/:restId",
             element:<RestaurantMenu/>
+        }
+        ,{
+            path:"/Grocery/",
+            element:<Suspense fallback={<h1>Lazy loading....</h1>}>  <Grocery/></Suspense>
         }
    ],
    errorElement:<Error/>
