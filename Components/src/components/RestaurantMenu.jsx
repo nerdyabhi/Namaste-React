@@ -1,34 +1,22 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import useRestaurantMenu from '../utils/useRestaurantMenu'
 
 const RestaurantMenu = () => {
     const restId = useParams().restId;
     
-    const [resInfo, setResInfo] = useState([]); // Initialize state to store restaurant data
-    const fetchData = async () => {
-        try {
-            const res = await fetch(
-                `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=22.4757928&lng=88.415546&restaurantId=${restId}&catalog_qa=undefined&submitAction=ENTER`
-            );
-            
-            const json = await res.json();
-            setResInfo(json); 
-        } catch (error) {
-            console.error("Error fetching data:", error); 
-        }
-    };
+   const resInfo = useRestaurantMenu(restId);
     
-    useEffect(() => {
-        fetchData(); // 
-    }, []);
-    
-    if (resInfo.length === 0) return <h1>Loading...</h1>; 
-    
+   console.log(resInfo);
+   
+   if (resInfo.length===0 ) return (<h1>Loading...</h1>);
+   
+   
     
     const imgPrefix = "https://media-assets.swiggy.com/swiggy/image/upload/";
     const {name , feeDetails , city , cloudinaryImageId , avgRating , totalRatingString} = resInfo.data.cards[2].card.card.info;
    
-    const menu = resInfo.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards[1].card.card.itemCards;
+    const menu = resInfo.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards[2].card.card.itemCards;
 
     
   return (
