@@ -1,44 +1,50 @@
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from '../utils/useRestaurantMenu'
-import Card from "./Card";
+import DishData from './DishData';
+const imgPrefix = "https://media-assets.swiggy.com/swiggy/image/upload/";
+
 
 const RestaurantMenu = () => {
   const restId = useParams().restId;
   const resInfo = useRestaurantMenu(restId);
-    
-   console.log(resInfo);
-   
-   if (resInfo.length===0 ) return (<h1>Loading...</h1>);
-   
-   
-    
-    const imgPrefix = "https://media-assets.swiggy.com/swiggy/image/upload/";
-    const {name , feeDetails , city , cloudinaryImageId , avgRating , totalRatingString} = resInfo.data.cards[2].card.card.info;
-   
-    const menu = resInfo.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards[2].card.card.itemCards;
+      
+  if (resInfo.length===0 ) return (<h1>Loading...</h1>);
 
+  
+   const tempCards = resInfo.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards;
+   const itemCards = tempCards.filter((c)=>{
+      return c.card.card["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory";
+   })
     
-  return (
-    <div className="flex flex-col items-center justify-center">
-      <img className="w-[200px]" src={imgPrefix + cloudinaryImageId} alt="" />
-      <h1>{name}</h1>
-      <p>{feeDetails.restaurantId}</p>
-      <p>{city}</p>
-      <p>{avgRating + "⭐ | " + totalRatingString}</p>
+   const restData = resInfo.data.cards[2].card.card.info;
+   console.log(restData);
+   return (
+    <>
+    <div className="flex flex-col items-center justify-center ">
+       <img  className="w-40 max-h-40 shadow-lg shadow-gray-700 rounded-r-lg" src={imgPrefix + restData.cloudinaryImageId} alt="" />
+       <h1 className="font-bold text-lg mt-3">{restData.name}</h1>
+       <h1 className="text-sm">{restData.avgRating} ⭐ | {restData.totalRatingsString}</h1>
+       <h1 className="text-sm">{restData.city}</h1>
+     </div>
 
+    <div className="flex flex-col">
+      {
+        itemCards.map((item , index)=>{
 
-      <div className="flex-col">
-            {menu.map((item)=>{
-                const {id , imageId , description , category , name } = item.card.info
-                return (
-                    <div key={id} className="flex gap-10 m-10 flex-wrap">
-                        <img className="w-20 h-20" src={imgPrefix + imageId} alt="Image" />
-                        <p>{name}</p>
-                    </div>
-                )
-            })}
-      </div>
+          
+              return (
+              <>
+              
+
+              <DishData key={index} data={item} />
+              </>
+          )
+        })
+      }
     </div>
+
+
+    </>
   );
 };
 
