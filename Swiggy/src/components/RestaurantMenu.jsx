@@ -30,7 +30,6 @@ const RestaurantMenu = () => {
     <div className="flex flex-col">
       {
         itemCards.map((item , index)=>{
-
           
               return (
               <>

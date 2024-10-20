@@ -6,15 +6,18 @@ import Contact from './components/Contact';
 import Error from './components/Error';
 import RestaurantMenu from './components/RestaurantMenu';
 import { lazy, Suspense } from 'react';
-
+import { Provider } from 'react-redux';
+import appStore from './utils/appStore';
 
 /* Lazy loading Grocery Component */
 const Grocery = lazy(()=>import('./components/Grocery'));
 const AppLayout = ()=> {
     return (
         <>
+        <Provider store={appStore}>
           <Header/>
           <Outlet/>
+        </Provider>
         </>
     );
 }

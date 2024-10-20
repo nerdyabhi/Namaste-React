@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import useIsOnline from "../utils/useIsOnline";
+import { useSelector } from "react-redux";
 
 function Header() {
   const isOnline = useIsOnline();
-  console.log("Value of isOnline " , isOnline);
-  
+  const cartItems = useSelector((store) => store.cart.items)
   return (
 
 
@@ -25,6 +25,7 @@ function Header() {
         <Link to="/about">About</Link>
         <Link to="/contact">Contact</Link>
         <Link to="/Grocery">Grocery</Link>
+        <Link to="/Grocery">Cart - {cartItems.length} Items</Link>
       </div>
 
 
