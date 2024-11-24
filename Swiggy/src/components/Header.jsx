@@ -25,7 +25,7 @@ function Header() {
         <Link to="/about">About</Link>
         <Link to="/contact">Contact</Link>
         <Link to="/Grocery">Grocery</Link>
-        <Link to="/Grocery">Cart - {cartItems.length} Items</Link>
+        <Link to="/Cart">Cart - {cartItems.length} Items</Link>
       </div>
 
 

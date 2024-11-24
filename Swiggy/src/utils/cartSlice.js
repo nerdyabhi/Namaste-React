@@ -4,7 +4,7 @@ import { act } from "react";
 const cartSlice = createSlice({
     name:"cart",
     initialState:{
-        items:["burer" , "pizza"]
+        items:[]
     },
 
     reducers:{
@@ -12,11 +12,11 @@ const cartSlice = createSlice({
             state.items.push(action.payload);
         },
 
-        removeItem:()=>{
+        removeItem:(state)=>{
             state.items.pop();
         },
 
-        clearCart:()=>{
+        clearCart:(state)=>{
             state.items.length=0;
         }
     }

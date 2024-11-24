@@ -8,6 +8,7 @@ import RestaurantMenu from './components/RestaurantMenu';
 import { lazy, Suspense } from 'react';
 import { Provider } from 'react-redux';
 import appStore from './utils/appStore';
+import Cart from './components/Cart';
 
 /* Lazy loading Grocery Component */
 const Grocery = lazy(()=>import('./components/Grocery'));
@@ -47,6 +48,10 @@ const appRouter = createBrowserRouter([
         ,{
             path:"/Grocery/",
             element:<Suspense fallback={<h1>Lazy loading....</h1>}>  <Grocery/></Suspense>
+        }
+        ,{
+            path:"/Cart/",
+            element:<Cart/>
         }
    ],
    errorElement:<Error/>

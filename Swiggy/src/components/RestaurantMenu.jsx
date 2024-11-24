@@ -8,16 +8,15 @@ const RestaurantMenu = () => {
   const restId = useParams().restId;
   const resInfo = useRestaurantMenu(restId);
       
-  if (resInfo.length===0 ) return (<h1>Loading...</h1>);
+  if (!resInfo ) return (<h1>Loading...</h1>);
 
   
-   const tempCards = resInfo.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards;
+   const tempCards = resInfo?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards || [];
    const itemCards = tempCards.filter((c)=>{
       return c.card.card["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory";
    })
     
-   const restData = resInfo.data.cards[2].card.card.info;
-   console.log(restData);
+   const restData = resInfo?.data?.cards[2]?.card?.card?.info;
    return (
     <>
     <div className="flex flex-col items-center justify-center ">

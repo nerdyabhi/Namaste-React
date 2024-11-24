@@ -1,5 +1,13 @@
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 
 const DishData = (props)=>{
+
+    const dispatch = useDispatch();
+
+    const handleAddItem = (item)=>{
+        dispatch(addItem(item))
+    }
     const data = props.data.card.card;
     const imgPrefix = "https://media-assets.swiggy.com/swiggy/image/upload/";
 
@@ -21,7 +29,7 @@ const DishData = (props)=>{
                    </div>
                    <div className="flex flex-col items-center relative">
                     <img className="w-30 max-h-24 rounded-lg shadow-lg   m-2 or" src={imgPrefix + info.imageId} alt="" />
-                        <button className="bg-green-800 w-full text-white py-1 px-3 rounded-lg bottom-0  absolute hover:scale-105">Add to cart</button>
+                        <p onClick={()=> handleAddItem(item)} className="bg-green-800 w-full text-white py-1 px-3 rounded-lg bottom-0 btn   hover:scale-105">Add to cart</p>
                    </div>
                 </div>
             )
