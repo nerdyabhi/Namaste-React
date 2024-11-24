@@ -27,13 +27,13 @@ const DishData = (props)=>{
                         <h1 className="text-xs md:text-sm">{info.description}</h1>
                    </div>
                    <div className="flex flex-col items-center w-full md:w-auto">
-                    <img className="w-full md:w-30 max-h-24 rounded-lg shadow-lg m-2" src={imgPrefix + info.imageId} alt={info.name} />
-                    <button 
+                    <img className="w-30 md:w-30 max-h-24 rounded-lg shadow-lg m-2" src={imgPrefix + info.imageId} alt={info.name} />
+                    <a  
                         onClick={()=> handleAddItem(item)} 
-                        className="bg-green-800 w-full md:w-auto text-white py-1 px-3 rounded-lg btn hover:scale-105 text-sm md:text-base"
+                        className=" btn bg-green-800 w-full md:w-auto text-white py-1 px-3 rounded-lg btn hover:scale-105 text-sm md:text-base"
                     >
                         Add to cart
-                    </button>
+                    </a>
                    </div>
                 </div>
             )
